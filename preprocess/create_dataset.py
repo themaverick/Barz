@@ -1,9 +1,11 @@
 import re
 import json
+from bs4 import BeautifulSoup
 import pandas as pd
 
 def remove_html_tags(text):
-    return re.sub(r'<.*?>', '', text)
+    soup = BeautifulSoup(text, "html.parser")
+    return soup.get_text()
 
 annots_list = []
 
